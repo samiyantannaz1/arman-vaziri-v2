@@ -1,0 +1,78 @@
+{
+  "aria-residence": {
+    "hero": {
+      "src": "/images/projects/aria-residence/hero.webp",
+      "width": 1267,
+      "height": 899
+    },
+    "disc": {
+      "src": "/images/projects/aria-residence/disc.webp",
+      "width": 721,
+      "height": 905
+    },
+    "cover": {
+      "src": "/images/projects/aria-residence/cover.webp",
+      "width": 1278,
+      "height": 895
+    },
+    "plan": null,
+    "home": [],
+    "gallery": [
+      {
+        "id": "a",
+        "columns": [
+          [
+            {
+              "name": "a",
+              "src": "/images/projects/aria-residence/a.webp",
+              "width": 1271,
+              "height": 896
+            }
+          ]
+        ]
+      },
+      {
+        "id": "b",
+        "columns": [
+          [
+            {
+              "name": "b-1",
+              "src": "/images/projects/aria-residence/b-1.webp",
+              "width": 709,
+              "height": 899
+            }
+          ],
+          [
+            {
+              "name": "b-2",
+              "src": "/images/projects/aria-residence/b-2.webp",
+              "width": 713,
+              "height": 902
+            }
+          ]
+        ]
+      },
+      {
+        "id": "c",
+        "columns": [
+          [
+            {
+              "name": "c-1",
+              "src": "/images/projects/aria-residence/c-1.webp",
+              "width": 715,
+              "height": 902
+            }
+          ],
+          [
+            {
+              "name": "c-2",
+              "src": "/images/projects/aria-residence/c-2.webp",
+              "width": 713,
+              "height": 902
+            }
+          ]
+        ]
+      }
+    ]
+  }
+}
