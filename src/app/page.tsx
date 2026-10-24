@@ -1,11 +1,12 @@
 import Image from "next/image";
-import { getProjects } from "@/lib/projects";
 import Placeholder from "@/components/Placeholder";
+import { getProjects } from "@/lib/projects";
+
 export default function Home() {
   const projects = getProjects();
 
   return (
-    <main className="min-h-screen bg-[#1a1a1a] p-10 text-white">
+    <main className="min-h-screen bg-bg px-10 pb-10 pt-32 text-white">
       <h1 className="mb-8 text-2xl">تست داده‌ها: {projects.length} پروژه</h1>
 
       <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
@@ -20,7 +21,7 @@ export default function Home() {
                 className="h-auto w-full"
               />
             ) : (
-           <Placeholder label={project.title} />
+              <Placeholder label={project.title} />
             )}
 
             <h2 className="mt-3 text-lg">{project.title}</h2>
