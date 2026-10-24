@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "images": "node scripts/optimize-images.mjs",
-"new-project": "node scripts/new-project.mjs"
+"new-project": "node scripts/new-project.mjs",
+"demo": "node scripts/demo.mjs"
   },
   "dependencies": {
     "next": "16.4.3",

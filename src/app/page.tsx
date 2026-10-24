@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { getProjects } from "@/lib/projects";
-
+import Placeholder from "@/components/Placeholder";
 export default function Home() {
   const projects = getProjects();
 
@@ -20,9 +20,7 @@ export default function Home() {
                 className="h-auto w-full"
               />
             ) : (
-              <div className="flex aspect-[4/3] items-center justify-center bg-white/10 text-sm text-white/40">
-                بدون عکس
-              </div>
+           <Placeholder label={project.title} />
             )}
 
             <h2 className="mt-3 text-lg">{project.title}</h2>
