@@ -197,3 +197,23 @@ body {
     display: none;
   }
 }
+/* ---------- Lightbox ---------- */
+
+@keyframes lightboxIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.lightbox-in {
+  animation: lightboxIn 0.25s ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightbox-in {
+    animation: none;
+  }
+}

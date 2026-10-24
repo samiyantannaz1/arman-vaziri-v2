@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import ProjectGallery from "@/components/ProjectGallery";
 import ProjectHero from "@/components/ProjectHero";
 import { getProject, getProjects } from "@/lib/projects";
 
@@ -51,6 +52,8 @@ export default async function ProjectPage({
           </p>
         </section>
       )}
+
+      <ProjectGallery blocks={project.gallery} title={project.title} />
     </main>
   );
 }
