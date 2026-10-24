@@ -40,3 +40,160 @@ body {
   filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.55))
     drop-shadow(0 3px 2px rgba(0, 0, 0, 0.65));
 }
+/* ---------- Project hero ---------- */
+
+.project-hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 620px;
+  overflow: hidden;
+  background: var(--bg-deep);
+}
+
+.project-hero-half {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  transition:
+    clip-path 2s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* لایه تیره روی عکس */
+.project-hero-half::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+}
+
+.project-hero-top {
+  clip-path: inset(0 100% 50% 0);
+  transform: translate(3vw, -1vh);
+}
+
+.project-hero-bottom {
+  clip-path: inset(50% 100% 0 0);
+  transform: translate(-3vw, 1vh);
+}
+
+.project-hero-visible .project-hero-top {
+  clip-path: inset(0 0 50% 0);
+  transform: none;
+}
+
+.project-hero-visible .project-hero-bottom {
+  clip-path: inset(50% 0 0 0);
+  transform: none;
+}
+
+/* صفحه مشکی اولیه با اسم برند */
+.project-hero-intro {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-deep);
+  transition:
+    opacity 0.8s ease,
+    visibility 0.8s ease;
+}
+
+.project-hero-intro span {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 11px;
+  letter-spacing: 0.35em;
+}
+
+.project-hero-visible .project-hero-intro {
+  opacity: 0;
+  visibility: hidden;
+  transition-delay: 0.7s;
+}
+
+/* عنوان و مشخصات */
+.project-hero-info {
+  position: absolute;
+  left: 7vw;
+  bottom: 8vh;
+  z-index: 9;
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.8s ease 1s,
+    transform 0.8s ease 1s;
+}
+
+.project-hero-visible .project-hero-info {
+  opacity: 1;
+  transform: none;
+}
+
+.project-hero-label {
+  display: block;
+  margin-bottom: 14px;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 9px;
+  letter-spacing: 0.35em;
+}
+
+.project-hero-title {
+  margin: 0;
+  font-size: clamp(32px, 5vw, 72px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.project-hero-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: clamp(13px, 1.4vw, 18px);
+  font-weight: 300;
+  letter-spacing: 0.16em;
+}
+
+@media (max-width: 767px) {
+  .project-hero-info {
+    right: 24px;
+    left: 24px;
+    bottom: 60px;
+  }
+}
+
+/* کاربرانی که انیمیشن کم می‌خوان: همه‌چیز بدون حرکت، یک‌جا */
+@media (prefers-reduced-motion: reduce) {
+  .project-hero-half,
+  .project-hero-info,
+  .project-hero-intro {
+    transition: none !important;
+  }
+
+  .project-hero-top {
+    clip-path: inset(0 0 50% 0);
+    transform: none;
+  }
+
+  .project-hero-bottom {
+    clip-path: inset(50% 0 0 0);
+    transform: none;
+  }
+
+  .project-hero-info {
+    opacity: 1;
+    transform: none;
+  }
+
+  .project-hero-intro {
+    display: none;
+  }
+}
