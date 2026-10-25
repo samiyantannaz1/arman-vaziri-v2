@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Reveal from "./Reveal";
 import type { Img } from "@/lib/projects";
 
 interface ProjectIntroProps {
@@ -37,7 +38,8 @@ export default function ProjectIntro({
       >
         {disc && (
           // --o = فاصله قاب و خط از لبه چپ عکس. فقط همین عدد را عوض کن.
-          <div className="relative mt-6 [--o:1rem] md:mt-8 md:[--o:2.5rem] lg:[--o:4.5rem]">
+         <Reveal>
+           <div className="relative mt-6 [--o:1rem] md:mt-8 md:[--o:2.5rem] lg:[--o:4.5rem]">
             {/* قاب طلایی */}
             <div
               aria-hidden="true"
@@ -59,6 +61,7 @@ export default function ProjectIntro({
               className="pointer-events-none absolute left-[calc(var(--o)*-1)] top-[20%] z-10 h-px w-[47%] origin-left -rotate-45 bg-gold/80"
             />
           </div>
+         </Reveal>
         )}
 
         <div className="flex flex-col justify-between gap-12">

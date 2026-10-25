@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import type { GalleryBlock } from "@/lib/projects";
+import Reveal from "./Reveal";
 
 export default function ProjectGallery({
   blocks,
@@ -61,9 +62,11 @@ export default function ProjectGallery({
   return (
     <section className="bg-deep px-6 py-24 md:px-10 lg:px-16">
       <div className="mx-auto max-w-[1050px]">
-        <span className="mb-16 block text-xs tracking-[0.35em] text-white/40">
-          GALLERY
-        </span>
+        <Reveal>
+          <span className="mb-16 block text-xs tracking-[0.35em] text-white/40">
+            GALLERY
+          </span>
+        </Reveal>
 
         <div className="space-y-4">
           {blocks.map((block) => (
@@ -81,23 +84,25 @@ export default function ProjectGallery({
                     className="flex flex-col gap-4"
                     style={{ flex: `${1 / ratio} 1 0%`, minWidth: 0 }}
                   >
-                    {column.map((img) => (
-                      <button
-                        key={img.name}
-                        type="button"
-                        onClick={() => setActive(indexOf.get(img.name) ?? 0)}
-                        aria-label={`Open image ${(indexOf.get(img.name) ?? 0) + 1}`}
-                        className="group block cursor-zoom-in overflow-hidden"
-                      >
-                        <Image
-                          src={img.src}
-                          alt={`${title} — image ${(indexOf.get(img.name) ?? 0) + 1}`}
-                          width={img.width}
-                          height={img.height}
-                          sizes="(max-width: 768px) 100vw, 1050px"
-                          className="block h-auto w-full transition-transform duration-700 ease-out group-hover:scale-[1.05]"
-                        />
-                      </button>
+                    {column.map((img, r) => (
+                      // هر عکس جدا ظاهر می‌شود؛ ستون‌های کنار هم کمی با تأخیر
+                      <Reveal key={img.name} delay={c * 140 + r * 100}>
+                        <button
+                          type="button"
+                          onClick={() => setActive(indexOf.get(img.name) ?? 0)}
+                          aria-label={`Open image ${(indexOf.get(img.name) ?? 0) + 1}`}
+                          className="group block w-full cursor-zoom-in overflow-hidden"
+                        >
+                          <Image
+                            src={img.src}
+                            alt={`${title} — image ${(indexOf.get(img.name) ?? 0) + 1}`}
+                            width={img.width}
+                            height={img.height}
+                            sizes="(max-width: 768px) 100vw, 1050px"
+                            className="block h-auto w-full transition-transform duration-700 ease-out group-hover:scale-[1.05]"
+                          />
+                        </button>
+                      </Reveal>
                     ))}
                   </div>
                 );
