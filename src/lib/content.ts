@@ -67,3 +67,19 @@ export const projectTypes = [
   "Commercial Project",
   "Other",
 ] as const;
+
+export const about = {
+  title: "About our company",
+  subtitle: "Full cycle studio of design and architecture",
+  // متن موقت: بعداً با متن واقعی جایگزین کن
+  paragraphs: [
+    "Arman Vaziri Studio brings together more than ten years of experience in architecture and interior design. Every project begins with listening: to the client, to the site and to the way a space will be lived in.",
+    "From concept development and detailed drawings to high-quality 3D visualizations and author’s supervision on site, we guide each project from the first sketch to the final detail.",
+  ],
+} as const;
+
+// image = اسم فایل تو public/images/site (بدون پسوند)
+export const team = [
+  { name: "Arman Vaziri", role: "Founder", image: "arman" },
+  // { name: "Name Surname", role: "Co-owner", image: "team-2" },
+] as const;
