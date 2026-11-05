@@ -2,6 +2,9 @@ export const site = {
   name: "Arman Vaziri",
   tagline: "Architecture & Design",
   credit: "Tannaz Samiyan",
+  phone: "+989105106627",
+  whatsapp: "989105106627", // فقط رقم، بدون + و فاصله
+  email: "samiyantannaz1@gmail.com", // موقت؛ قبل از تحویل تغییر بده
 };
 
 export const nav = [
@@ -11,3 +14,4 @@ export const nav = [
   { label: "Services", href: "/services" },
   { label: "Contact", href: "/contact" },
 ] as const;
+

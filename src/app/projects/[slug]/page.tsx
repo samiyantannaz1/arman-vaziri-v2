@@ -45,14 +45,15 @@ export default async function ProjectPage({
 
   return (
     <main>
-      <ProjectHero
+           <ProjectHero
         title={project.title}
         hero={project.hero?.src ?? null}
         location={project.location}
         area={project.area}
         year={project.year}
+        prev={prev && { slug: prev.slug, title: prev.title }}
+        next={next && { slug: next.slug, title: next.title }}
       />
-
       <ProjectIntro
         title={project.title}
         description={project.description}

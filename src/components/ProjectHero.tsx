@@ -1,7 +1,13 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
+
+interface Adjacent {
+  slug: string;
+  title: string;
+}
 
 interface ProjectHeroProps {
   title: string;
@@ -9,6 +15,8 @@ interface ProjectHeroProps {
   location: string;
   area: string;
   year: string;
+  prev: Adjacent | null;
+  next: Adjacent | null;
 }
 
 export default function ProjectHero({
@@ -17,60 +25,80 @@ export default function ProjectHero({
   location,
   area,
   year,
+  prev,
+  next,
 }: ProjectHeroProps) {
-  const [visible, setVisible] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setVisible(true), 150);
+    const timer = setTimeout(() => setOpen(true), 150);
     return () => clearTimeout(timer);
   }, []);
 
   const [first, ...rest] = title.split(" ");
   const place = [location, area].filter(Boolean).join(" / ");
+  const meta = [place, year].filter(Boolean);
 
   return (
-    <section
-      className={`project-hero ${visible ? "project-hero-visible" : ""}`}
-    >
-      {hero &&
-        (["top", "bottom"] as const).map((part) => (
-          <div
-            key={part}
-            className={`project-hero-half project-hero-${part}`}
-            aria-hidden={part === "bottom"}
-          >
-            <Image
-              src={hero}
-              alt={part === "top" ? title : ""}
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover"
-            />
-          </div>
-        ))}
-
-      <div className="project-hero-intro" aria-hidden="true">
-        <span>ARMAN VAZIRI</span>
-      </div>
-
-      <div className="project-hero-info">
-        <span className="project-hero-label">PROJECT</span>
-
-        <h1 className="project-hero-title">
-          <span className="font-bold">{first}</span>
-          {rest.length > 0 && (
-            <span className="font-light"> {rest.join(" ")}</span>
-          )}
-        </h1>
-
-        {(place || year) && (
-          <ul className="project-hero-meta">
-            {place && <li>{place}</li>}
-            {year && <li>{year}</li>}
-          </ul>
+    <section className={`ph ${open ? "ph-open" : ""}`}>
+      {/* عکس: کج و باریک شروع می‌شود و صاف و تمام‌صفحه می‌شود */}
+      <div className="ph-media" aria-hidden="true">
+        {hero && (
+          <Image
+            src={hero}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
         )}
+        <div className="ph-shade" />
       </div>
+
+      <div className="ph-line" aria-hidden="true" />
+      <div className="ph-diag" aria-hidden="true" />
+
+      <nav aria-label="Breadcrumb" className="ph-crumbs ph-fade">
+        <Link href="/">Home</Link>
+        <span aria-hidden="true">-</span>
+        <Link href="/projects">Projects</Link>
+        <span aria-hidden="true">-</span>
+        <span aria-current="page">{title}</span>
+      </nav>
+
+      <h1 className="ph-title">
+        <span className="ph-title-1">{first}</span>
+        {rest.length > 0 && (
+          <span className="ph-title-2">{rest.join(" ")}</span>
+        )}
+      </h1>
+
+      {meta.length > 0 && (
+        <ul className="ph-meta ph-fade">
+          {meta.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      )}
+
+      {prev && (
+        <Link
+          href={`/projects/${prev.slug}`}
+          className="ph-btn ph-btn-prev ph-fade"
+        >
+          <span aria-hidden="true">←</span> Previous Project
+        </Link>
+      )}
+
+      {next && (
+        <Link
+          href={`/projects/${next.slug}`}
+          className="ph-btn ph-btn-next ph-fade"
+        >
+          Next Project <span aria-hidden="true">→</span>
+        </Link>
+      )}
     </section>
   );
 }

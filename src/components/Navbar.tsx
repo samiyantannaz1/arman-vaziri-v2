@@ -39,8 +39,8 @@ export default function Navbar() {
   };
 
   const linkClass = (href: string) =>
-    `whitespace-nowrap text-[15px] font-semibold tracking-[0.1em] transition-colors duration-300 ${
-      isActive(href) ? "text-gold" : "text-white/80 hover:text-gold"
+    `font-wide whitespace-nowrap text-[11px] font-bold uppercase tracking-[0.04em] transition-colors duration-300 lg:text-[13px] xl:text-[14px] ${
+      isActive(href) ? "text-gold" : "text-white hover:text-gold"
     }`;
 
   const left = nav.slice(0, 3);
@@ -48,12 +48,12 @@ export default function Navbar() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
-      {/* دسکتاپ */}
+      {/* دسکتاپ: لوگو بالا، لینک‌ها پایین‌تر */}
       <nav
         aria-label="Main navigation"
-        className="relative mx-auto hidden max-w-7xl items-center justify-between px-8 pb-6 pt-10 md:flex"
+        className="relative hidden w-full items-center justify-between px-6 pb-6 pt-[86px] md:flex lg:px-[10%]"
       >
-        <div className="flex flex-1 items-center gap-10">
+        <div className="flex flex-1 items-center gap-6 lg:gap-12 xl:gap-20">
           {left.map((item) => (
             <Link
               key={item.href}
@@ -70,14 +70,17 @@ export default function Navbar() {
           href="/"
           aria-label={`${site.name} home`}
           onMouseMove={moveLight}
-          className="absolute left-1/2 top-8 -translate-x-1/2"
+          className="absolute left-1/2 top-[39px] -translate-x-1/2"
         >
-          <span className="metallic-logo block text-[18px] font-bold uppercase tracking-[0.24em]">
+          <span
+            id="site-logo"
+            className="metallic-logo block text-[18px] font-bold uppercase tracking-[0.24em]"
+          >
             {site.name}
           </span>
         </Link>
 
-        <div className="flex flex-1 items-center justify-end gap-10">
+        <div className="flex flex-1 items-center justify-end gap-6 lg:gap-12 xl:gap-20">
           {right.map((item) => (
             <Link
               key={item.href}
@@ -94,6 +97,7 @@ export default function Navbar() {
       {/* موبایل: نوار بالا */}
       <div className="flex items-center justify-between px-7 py-5 md:hidden">
         <Link
+          id="site-logo-mobile"
           href="/"
           onClick={() => setOpen(false)}
           className="relative z-[80] text-sm font-semibold tracking-[0.16em] text-white"

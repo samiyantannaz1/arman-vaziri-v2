@@ -1,10 +1,11 @@
 import Link from "next/link";
+import Container from "@/components/Container";
 import { nav, site } from "@/lib/site";
 
 export default function Footer() {
   return (
     <footer className="relative z-10 border-t border-white/10 bg-bg text-white">
-      <div className="mx-auto max-w-[1440px] px-5 pb-6 pt-16 sm:px-8 sm:pt-20 lg:px-12 lg:pt-24">
+      <Container className="pb-6 pt-16 sm:pt-20 lg:pt-24">
         <div className="flex flex-col gap-8 border-b border-white/15 pb-12 sm:pb-16 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <Link
@@ -70,7 +71,7 @@ export default function Footer() {
             BACK TO TOP ↑
           </a>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 }

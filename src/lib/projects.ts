@@ -109,3 +109,5 @@ export function getProjects(): Project[] {
 export function getProject(slug: string) {
   return getProjects().find((project) => project.slug === slug);
 }
+
+
