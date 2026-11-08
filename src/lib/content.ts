@@ -79,7 +79,21 @@ export const about = {
 } as const;
 
 // image = اسم فایل تو public/images/site (بدون پسوند)
-export const team = [
-  { name: "Arman Vaziri", role: "Founder", image: "arman" },
+export interface TeamMember {
+  name: string;
+  role: string;
+  image: string; // اسم فایل تو public/images/site (بدون پسوند)
+  bio?: string;
+}
+
+export const team: TeamMember[] = [
+  {
+    name: "Arman Vaziri",
+    role: "Founder & Architect",
+    image: "arman",
+    // متن موقت: بعداً با متن واقعی جایگزین کن
+    bio: "Arman leads every project personally, from the first concept to the final detail on site. His work is shaped by form, material and light, and by a careful relationship between a space and the people who live in it.",
+  },
+  // برای اضافه کردن نفر بعدی (که بخش را به «our team» تبدیل می‌کند):
   // { name: "Name Surname", role: "Co-owner", image: "team-2" },
-] as const;
+];

@@ -10,7 +10,8 @@
     "images": "node scripts/optimize-images.mjs",
 "new-project": "node scripts/new-project.mjs",
 "demo": "node scripts/demo.mjs",
-"images:site": "node scripts/optimize-site-images.mjs"
+"images:site": "node scripts/optimize-site-images.mjs",
+"migrate": "node scripts/migrate-old.mjs"
   },
   "dependencies": {
     "next": "16.4.3",
